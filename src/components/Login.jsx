@@ -17,6 +17,13 @@ export class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    handleChange(e) {
+        this.setState((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }))
+    }
+
     render() {
         return (
             <div style={{ "backgroundImage": "url('assets/img/home-bg.jpg')" }}>
