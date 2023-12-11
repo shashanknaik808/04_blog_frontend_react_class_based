@@ -24,6 +24,11 @@ export class Login extends Component {
         }))
     }
 
+    handleSubmit(e) {
+        e.preventDefault()
+        console.log(this.state.inputs);
+    }
+
     render() {
         return (
             <div style={{ "backgroundImage": "url('assets/img/home-bg.jpg')" }}>
