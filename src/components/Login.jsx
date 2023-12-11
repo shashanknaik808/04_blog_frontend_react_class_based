@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
 
 export class Login extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isSignup: true,
+            inputs: {
+                name: "",
+                email: "",
+                password: ""
+            }
+
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
     render() {
         return (
             <div style={{ "backgroundImage": "url('assets/img/home-bg.jpg')" }}>
