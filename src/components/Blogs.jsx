@@ -4,6 +4,30 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 export class Blogs extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            blogs: [],
+        }
+        this.sendRequest = this.sendRequest.bind(this);
+    }
+
+    async sendRequest() {
+        const res = await axios.get(`http://localhost:5000/api/blog`)
+            .catch(err => console.log(err))
+
+        const data = await res.data;
+        console.log(data);
+        return data;
+    }
+    async componentDidMount() {
+        await this.sendRequest()
+            .then(data => this.setState(data.blogs))
+
+        console.log(this.state.blogs);
+    }
+
     render() {
         return (
             <>
