@@ -47,6 +47,10 @@ export class Signup extends Component {
         console.log(this.state.inputs);
         this.sendRequest()
             .then(data => localStorage.setItem("userID", data.user._id))
+            .then(data => {
+                this.props.setLoggedIn(true);
+                window.location.replace("/myBlogs")
+            })
             .catch(err => console.log("There is mistake in Sign up"))
     }
 
