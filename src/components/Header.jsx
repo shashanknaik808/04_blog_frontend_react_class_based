@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 export class Header extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
 
         let imageURL = `url('${this.props.banner}')`;
