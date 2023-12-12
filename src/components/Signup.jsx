@@ -12,6 +12,22 @@ export class Signup extends Component {
             }
 
         }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(e) {
+        this.setState((prevState) => ({
+            inputs: {
+                ...prevState.inputs,
+                [e.target.name]: e.target.value,
+            }
+        }))
+    }
+
+    handleSubmit(e) {
+        e.preventDefault()
+        console.log(this.state.inputs);
     }
 
     render() {
