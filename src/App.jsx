@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Login from './components/Login';
 import { Route, Routes } from 'react-router-dom';
 import Logout from './components/Logout';
+import Signup from './components/Signup';
 
 export class App extends Component {
   render() {
