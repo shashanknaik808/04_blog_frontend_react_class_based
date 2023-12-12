@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import { Route, Routes } from 'react-router-dom';
+import Logout from './components/Logout';
 
 export class App extends Component {
   render() {
