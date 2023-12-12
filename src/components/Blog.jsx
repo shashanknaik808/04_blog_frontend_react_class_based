@@ -14,6 +14,7 @@ export class Blog extends Component {
                     <Link to={`/blog/${this.props.id}`}>
                         <h2 className="post-title">{this.props.title}</h2>
                         <h3 className="post-subtitle">{this.props.description}</h3>
+                        <h3 className="post-image">{this.props.imageURL}</h3>
                     </Link>
 
                     <p className="post-meta">
