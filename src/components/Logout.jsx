@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import Home from './Home';
 
 export class Logout extends Component {
 
@@ -9,7 +9,8 @@ export class Logout extends Component {
     }
 
     handleLogout() {
-        this.props.isLoggedIn(false)
+        this.props.setLoggedIn(true);
+        window.location.replace("/myBlogs")
         localStorage.clear();
 
     }
@@ -17,8 +18,7 @@ export class Logout extends Component {
     render() {
         return (
             <div onClick={this.handleLogout}>
-                <Link to='/auth'></Link>
-                Thank You
+                <Home />
             </div>
         )
     }
