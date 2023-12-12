@@ -1,8 +1,32 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Header from './Header';
+import axios from 'axios';
+import React, { Component } from 'react'
+import Blog from './Blog';
+// import { Link } from 'react-router-dom'
 
 export class Home extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            blogs: [],
+        }
+        this.sendRequest = this.sendRequest.bind(this);
+    }
+
+    async sendRequest() {
+        const res = await axios.get(`http://localhost:5000/api/blog`)
+            .catch(err => console.log(err))
+
+        const data = await res.data;
+        //console.log(data);
+        return data;
+    }
+    async componentDidMount() {
+        this.sendRequest().then(data => this.setState(data));
+        //console.log(data.blogs);
+        //this.setState({ blogs: data.blogs });
+    }
+
     render() {
         return (
             <>
