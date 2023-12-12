@@ -16,7 +16,11 @@ export class Navbar extends Component {
                             <ul className="navbar-nav ms-auto py-4 py-lg-0">
                                 <li className="nav-item"><Link to='/auth' className="nav-link px-lg-3 py-3 py-lg-4">Login</Link></li>
                                 <li className="nav-item"><Link to="/auth/signup" className="nav-link px-lg-3 py-3 py-lg-4">Sign up</Link></li>
-                                <li className="nav-item"><Link to="/auth/logout" className="nav-link px-lg-3 py-3 py-lg-4">Logout</Link></li>
+                                <li className="nav-item"><Link to="/auth/logout" className="nav-link px-lg-3 py-3 py-lg-4"
+                                    onClick={() => {
+                                        localStorage.clear();
+                                        this.props.setState(false)
+                                    }}>Logout</Link></li>
                             </ul>
                         </div>
                     </div>
