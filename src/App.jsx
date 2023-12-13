@@ -9,6 +9,7 @@ import Signup from './components/Signup';
 import AddBlogs from './components/AddBlogs';
 import UserBlogs from './components/UserBlogs';
 import BlogDetail from './components/BlogDetail';
+import Blog from './components/Blog'
 
 export class App extends Component {
   constructor(props) {
@@ -30,13 +31,14 @@ export class App extends Component {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/auth' element={<Login setLoggedIn={this.setLoggedIn} />} />
-          <Route path='/auth/logout' element={<Logout setLoggedIn={this.setLoggedIn()} />} />
-          <Route path='/auth/signup' element={<Signup setLoggedIn={this.setLoggedIn()} />} />
+          <Route path='/auth/logout' element={<Logout setLoggedIn={this.setLoggedIn} />} />
+          <Route path='/auth/signup' element={<Signup setLoggedIn={this.setLoggedIn} />} />
 
           <Route path='/' element={<Home />} />
+          <Route path='/blog/:id' element={<Blog />} />
           <Route path='/blog/add' element={<AddBlogs isLoggedIn={this.state.isLoggedIn} />} />
           <Route path='/myBlogs' element={<UserBlogs />} />
-          <Route path='/myBlogs/:id' element={<BlogDetail />} />
+          <Route path='/editBlogs/:id' element={<BlogDetail />} />
         </Routes>
         <Footer />
 
