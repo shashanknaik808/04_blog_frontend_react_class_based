@@ -44,25 +44,25 @@ export class Home extends Component {
                     </div>
                 </header>
 
-                <div class="container px-4 px-lg-5">
-                    <div class="row gx-4 gx-lg-5 justify-content-center">
-                        <div class="col-md-10 col-lg-8 col-xl-7">
+                <div className="container px-4 px-lg-5">
+                    <div className="row gx-4 gx-lg-5 justify-content-center">
+                        <div className="col-md-10 col-lg-8 col-xl-7">
                             {
                                 (this.state.blogs.length !== 0) && this.state.blogs.map((blog, index) =>
 
                                     <div>
-                                        <div class="post-preview">
+                                        <div className="post-preview">
                                             <a href="#">
-                                                <h2 class="post-title">{blog.title}</h2>
-                                                <h3 class="post-subtitle">{blog.description}</h3>
+                                                <h2 className="post-title">{blog.title}</h2>
+                                                <h3 className="post-subtitle">{blog.description}</h3>
                                             </a>
-                                            <p class="post-meta">
+                                            <p className="post-meta">
                                                 Posted by
                                                 <a href="#!"> {blog.user.name} </a>
                                             </p>
                                         </div>
 
-                                        <hr class="my-4" />
+                                        <hr className="my-4" />
                                     </div>
                                 )
 
