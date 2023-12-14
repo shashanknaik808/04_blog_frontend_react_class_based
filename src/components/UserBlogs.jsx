@@ -58,7 +58,7 @@ export class UserBlogs extends Component {
                                 this.state.user.blogs.map((blog, index) => (
                                     <div key={index}>
                                         <div className="post-preview">
-                                            <Link to={`/myBlogs`} >
+                                            <Link to={`/blog/${blog._id}`} >
                                                 <h2 className="post-title">{blog.title}</h2>
                                                 <h3 className="post-subtitle">{blog.description}</h3>
                                             </Link>
