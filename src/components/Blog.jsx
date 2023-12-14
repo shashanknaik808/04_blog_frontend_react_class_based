@@ -8,6 +8,7 @@ class Blog extends Component {
         this.state = {
             blog: null,
         };
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     async fetchDetails(id) {
@@ -30,6 +31,22 @@ class Blog extends Component {
         if (data) {
             this.setState({ blog: data.blog });
         }
+    }
+
+    async deleteRequest(id) {
+        console.log(id);
+
+        const res = await axios.delete(`http://localhost:5000/api/blog/${id}`)
+            .catch(err => console.log(err))
+
+        const data = res.data;
+        return data;
+    }
+
+    handleDelete() {
+        const idArr = document.URL.split('/');
+        let id = idArr[idArr.length - 1];
+        this.deleteRequest(id)
     }
 
     render() {
@@ -58,11 +75,13 @@ class Blog extends Component {
                                     {/* <img>{this.state.blog.image}</img> */}
                                     {(this.state.blog.user._id === localStorage.getItem("userID")) && (
                                         <>
-                                            <div style={{ padding: "20px" }}>
+                                            <div>
                                                 <Link to={`/editBlog/${this.state.blog._id}`}>
-                                                    <i className="fa-solid fa-pen-to-square"></i>
+                                                    <i className="fa-solid fa-pen-to-square" ></i>
                                                 </Link>
-                                                <i className="fa-solid fa-trash"></i>
+                                                <Link to={`/myBlogs`} onClick={this.handleDelete}>
+                                                    <i className="fa-solid fa-trash" style={{ marginLeft: "20px" }} ></i>
+                                                </Link>
                                             </div>
                                         </>
                                     )}
