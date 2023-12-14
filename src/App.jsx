@@ -15,7 +15,7 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false,
+      isLoggedIn: true,
     }
     this.setLoggedIn = this.setLoggedIn.bind(this);
   }
@@ -27,7 +27,7 @@ export class App extends Component {
   render() {
     return (
       <>
-        <Navbar isLoggedIn={this.state.isLoggedIn} />
+        <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/auth' element={<Login setLoggedIn={this.setLoggedIn} />} />
