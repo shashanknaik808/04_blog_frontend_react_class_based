@@ -30,16 +30,20 @@ export class AddBlogs extends Component {
             title: this.state.inputs.title,
             description: this.state.inputs.description,
             image: this.state.inputs.image,
-            user: localStorage.getItem("userID")
-        }).catch(err => {
-            if (err.response.request.status === 404) {
-                alert("User does not exist");
-                this.setState(false);
-            } else if (err.response.request.status === 400) {
-                alert("Invalid password");
-                this.setState(false);
-            }
+            userID: localStorage.getItem("userID")
         })
+        .catch(err => {
+            if (err.response.status === 404) {
+                alert("User does not exist");
+                // Handle other error cases as needed
+            } else if (err.response.status === 400) {
+                alert("Invalid password");
+                // Handle other error cases as needed
+            } else {
+                console.error("Unexpected error:", err);
+            }
+        });
+        
 
         let data = null;
         if (res) {
