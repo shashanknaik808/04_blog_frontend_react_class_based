@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react'
-import Blog from './Blog';
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export class Home extends Component {
 
@@ -50,15 +49,14 @@ export class Home extends Component {
                             {
                                 (this.state.blogs.length !== 0) && this.state.blogs.map((blog, index) =>
 
-                                    <div>
+                                    <div key={index}>
                                         <div className="post-preview">
-                                            <a href="#">
+                                            <Link to={`/blog/${blog._id}`}>
                                                 <h2 className="post-title">{blog.title}</h2>
                                                 <h3 className="post-subtitle">{blog.description}</h3>
-                                            </a>
+                                            </Link>
                                             <p className="post-meta">
-                                                Posted by
-                                                <a href="#!"> {blog.user.name} </a>
+                                                Posted by {blog.user.name}
                                             </p>
                                         </div>
 
