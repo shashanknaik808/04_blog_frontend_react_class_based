@@ -32,18 +32,18 @@ export class AddBlogs extends Component {
             image: this.state.inputs.image,
             userID: localStorage.getItem("userID")
         })
-        .catch(err => {
-            if (err.response.status === 404) {
-                alert("User does not exist");
-                // Handle other error cases as needed
-            } else if (err.response.status === 400) {
-                alert("Invalid password");
-                // Handle other error cases as needed
-            } else {
-                console.error("Unexpected error:", err);
-            }
-        });
-        
+            .catch(err => {
+                if (err.response.status === 404) {
+                    alert("User does not exist");
+                    // Handle other error cases as needed
+                } else if (err.response.status === 400) {
+                    alert("Invalid password");
+                    // Handle other error cases as needed
+                } else {
+                    console.error("Unexpected error:", err);
+                }
+            });
+
 
         let data = null;
         if (res) {
@@ -56,23 +56,25 @@ export class AddBlogs extends Component {
         e.preventDefault();
         this.sendRequest()
             .then(data => console.log(data))
+            .then(() => {
+                window.location.replace("/myBlogs")
+            })
         console.log(this.state.inputs);
     }
 
     render() {
         return (
             <>
-                <header className="masthead" style={{ "backgroundImage": "url('assets/img/about-bg.jpg')" }}>
-                    <div className="container position-relative px-4 px-lg-5">
-                        <div className="row gx-4 gx-lg-5 justify-content-center">
-                            <div className="col-md-10 col-lg-8 col-xl-7">
-                                <div className="page-heading">
-                                    <h1>Add Blog</h1>
-                                    <span className="subheading">Add Your New Blogs</span>
-                                </div>
+                <header className="masthead" style={{ "backgroundImage": "url('assets/img/post-sample-image.jpg')" }}>          <div className="container position-relative px-4 px-lg-5">
+                    <div className="row gx-4 gx-lg-5 justify-content-center">
+                        <div className="col-md-10 col-lg-8 col-xl-7">
+                            <div className="page-heading">
+                                <h1>Add Blog</h1>
+                                <span className="subheading">Add Your New Blogs</span>
                             </div>
                         </div>
                     </div>
+                </div>
                 </header>
 
                 <div className="container px-4 px-lg-5">
