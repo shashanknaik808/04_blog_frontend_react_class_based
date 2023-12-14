@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Home from './Home';
+// import Home from './Home';
 
 export class Logout extends Component {
 
@@ -9,8 +9,8 @@ export class Logout extends Component {
     }
 
     handleLogout() {
-        this.props.setLoggedIn(true);
-        window.location.replace("/myBlogs")
+        this.props.setLoggedIn(false);
+        window.location.replace("/")
         localStorage.clear();
 
     }
