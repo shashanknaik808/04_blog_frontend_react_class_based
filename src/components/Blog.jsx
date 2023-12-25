@@ -61,6 +61,7 @@ class Blog extends Component {
                                     <h1>{this.state.blog.title}</h1>
                                     <span className="meta">
                                         Posted by {this.state.blog.user.name}
+                                        on xxxxxxxx
                                     </span>
                                 </div>
                             </div>
@@ -75,7 +76,7 @@ class Blog extends Component {
                                     {/* <img>{this.state.blog.image}</img> */}
                                     {(this.state.blog.user._id === localStorage.getItem("userID")) && (
                                         <>
-                                            <div>
+                                            <div >
                                                 <Link to={`/editBlog/${this.state.blog._id}`}>
                                                     <i className="fa-solid fa-pen-to-square" ></i>
                                                 </Link>
@@ -96,5 +97,4 @@ class Blog extends Component {
         );
     }
 }
-
 export default Blog;

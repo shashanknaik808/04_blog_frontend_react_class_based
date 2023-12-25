@@ -18,7 +18,6 @@ export class Logout extends Component {
     render() {
         return (
             <div onClick={this.handleLogout}>
-                <Home />
             </div>
         )
     }

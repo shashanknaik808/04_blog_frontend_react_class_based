@@ -14,8 +14,6 @@ export class UserBlogs extends Component {
     }
 
     async sendRequest(id) {
-        // const id = localStorage.getItem("userID");
-        // console.log(id);
         const res = await axios.get(`http://localhost:5000/api/blog/user/${id}`)
             // .then(data => console.log(data))
             .catch(err => console.log(err))
