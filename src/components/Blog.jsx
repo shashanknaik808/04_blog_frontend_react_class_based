@@ -52,49 +52,50 @@ class Blog extends Component {
     render() {
 
         return (
-            <> {(this.state.blog === null) ? <h1>Loading</h1> :
-                (<div><header className="masthead" style={{ 'backgroundImage': "url(" + this.state.blog.image + " )" }}>
-                    <div className="container position-relative px-4 px-lg-5">
-                        <div className="row gx-4 gx-lg-5 justify-content-center">
-                            <div className="col-md-10 col-lg-8 col-xl-7">
-                                <div className="post-heading">
-                                    <h1>{this.state.blog.title}</h1>
-                                    <span className="meta">
-                                        Posted by {this.state.blog.user.name}
-                                        on xxxxxxxx
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-                    <article className="mb-4">
-                        <div className="container px-4 px-lg-5">
+            <>
+                {(this.state.blog === null) ? <h1>Loading</h1> :
+                    (<div><header className="masthead" style={{ 'backgroundImage': "url('http://localhost:5000" + this.state.blog.image + "')" }}>
+                        <div className="container position-relative px-4 px-lg-5">
                             <div className="row gx-4 gx-lg-5 justify-content-center">
                                 <div className="col-md-10 col-lg-8 col-xl-7">
-                                    <p>{this.state.blog.description}</p>
-                                    {/* <img>{this.state.blog.image}</img> */}
-                                    {(this.state.blog.user._id === localStorage.getItem("userID")) && (
-                                        <>
-                                            <div >
-                                                <Link to={`/editBlog/${this.state.blog._id}`}>
-                                                    <i className="fa-solid fa-pen-to-square" ></i>
-                                                </Link>
-                                                <Link to={`/myBlogs`} onClick={this.handleDelete}>
-                                                    <i className="fa-solid fa-trash" style={{ marginLeft: "20px" }} ></i>
-                                                </Link>
-                                            </div>
-                                        </>
-                                    )}
+                                    <div className="post-heading">
+                                        <h1>{this.state.blog.title}</h1>
+                                        <span className="meta">
+                                            Posted by  {this.state.blog.user.name}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </article>
-                </div>
-                )
-            }
+                    </header>
+                        <article className="mb-4">
+                            <div className="container px-4 px-lg-5">
+                                <div className="row gx-4 gx-lg-5 justify-content-center">
+                                    <div className="col-md-10 col-lg-8 col-xl-7">
+                                        <p>{this.state.blog.description}</p>
+                                        {/* <img>{this.state.blog.image}</img> */}
+                                        {(this.state.blog.user._id === localStorage.getItem("userID")) && (
+                                            <>
+                                                <div >
+                                                    <Link to={`/editBlog/${this.state.blog._id}`}>
+                                                        <i className="fa-solid fa-pen-to-square" ></i>
+                                                    </Link>
+                                                    <Link to={`/myBlogs`} onClick={this.handleDelete}>
+                                                        <i className="fa-solid fa-trash" style={{ marginLeft: "20px" }} ></i>
+                                                    </Link>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    )
+                }
             </>
         );
     }
 }
+
 export default Blog;
