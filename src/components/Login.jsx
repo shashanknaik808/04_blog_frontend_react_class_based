@@ -1,21 +1,20 @@
 import axios from 'axios';
-import React, { Component } from 'react'
-// import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 
-export class Login extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
             inputs: {
-                email: "",
-                password: ""
+                email: '',
+                password: '',
             },
             error: {
                 errFlag: false,
-                errStatus: "",
-                errMsg: ""
-            }
-        }
+                errStatus: '',
+                errMsg: '',
+            },
+        };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.sendRequest = this.sendRequest.bind(this);
@@ -27,51 +26,67 @@ export class Login extends Component {
             inputs: {
                 ...prevState.inputs,
                 [e.target.name]: e.target.value,
-            }
-        }))
+            },
+        }));
     }
 
     async sendRequest() {
         let res;
 
         try {
-            res = await axios.post(`http://localhost:5000/api/user/login`, {
+            res = await axios.post('http://localhost:5000/api/user/login', {
                 email: this.state.inputs.email,
                 password: this.state.inputs.password,
             });
-        }
-        catch (err) {
+        } catch (err) {
             this.props.setLoggedIn(false);
 
-            this.setState(prevState => ({
+            this.setState((prevState) => ({
                 ...prevState,
                 error: {
                     errFlag: true,
                     errStatus: err.response.request.status,
                     errMsg: err.response.data.message,
-                }
+                },
             }));
         }
 
-        let data = null;
-        if (res) {
-            data = await res.data;
-        }
-        return data;
+        return res.data; // Directly access the data property
     }
 
     handleSubmit(e) {
         e.preventDefault();
         this.sendRequest()
-            .then(data => {
-                localStorage.setItem("userID", data.user._id);
-                this.props.setLoggedIn(() => ({
-                    isLoggedIn: true
-                }));
-                window.location.replace("/myBlogs");
+            .then((data) => {
+                if (data && data.user && data.user._id) {
+                    localStorage.setItem('userID', data.user._id);
+                    this.props.setLoggedIn(() => ({
+                        isLoggedIn: true,
+                    }));
+                    window.location.replace('/myBlogs');
+                } else {
+                    console.log('User ID not being set into Local Storage, so chill!!');
+                }
             })
-            .catch(err => console.log("User ID not being set into Local Storage, so chill!!"))
+            .catch((err) =>
+                console.log('User ID not being set into Local Storage, so chill!!')
+            );
     }
+
+    componentDidMount() {
+        // Reset error to null on page reload
+        window.addEventListener('beforeunload', () => {
+            this.setState((prevState) => ({
+                ...prevState,
+                error: {
+                    errFlag: false,
+                    errStatus: '',
+                    errMsg: '',
+                },
+            }));
+        });
+    }
+
 
     render() {
         return (
